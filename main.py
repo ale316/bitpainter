@@ -1,5 +1,6 @@
 from PIL import Image
 from os import walk, path
+from random import randint
 
 walker = walk('portraits')
 root, folders, files = next(walker)
@@ -27,10 +28,10 @@ for portrait in portraits:
 	size = (maxAvgDim, int(maxAvgDim*h_w)) if w < h else (int(maxAvgDim*w_h), maxAvgDim)
 	portrait = portrait.resize(size)
 
-	dx = abs(size[0]-avgW)*0.5
-	dy = abs(size[1]-avgH)*0.5
+	dx = int(abs(size[0]-avgW)*0.5)
+	dy = int(abs(size[1]-avgH)*0.5)
 
 	portrait = portrait.crop((dx, dy, avgW+dx, avgH+dy))
-
+	# portrait.save(str(randint(0,10000))+'.jpg')
 	print portrait.size
 	
