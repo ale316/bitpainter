@@ -20,14 +20,11 @@ avgW = totW / len(files)
 avgH = totH / len(files)
 maxAvgDim = avgW if avgW > avgH else avgH
 
-print avgW, avgH
-	
 for portrait in portraits: 
 	w, h = portrait.size
 	w_h = w/float(h)
 	h_w = h/float(w)
 	size = (maxAvgDim, int(maxAvgDim*h_w)) if w < h else (int(maxAvgDim*w_h), maxAvgDim)
-	print w_h, h_w, w,h,size
 	portrait = portrait.resize(size)
 
 	dx = abs(size[0]-avgW)*0.5
